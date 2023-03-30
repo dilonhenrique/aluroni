@@ -1,14 +1,17 @@
 import styles from './Item.module.scss';
-import cardapio from '../itens.json';
-import classNames from 'classnames';
+import { Prato } from 'types/Prato';
+import TagsPrato from 'components/TagsPrato';
+import { useNavigate } from 'react-router-dom';
 
-type Props = typeof cardapio[0]
-
-export default function Item(item: Props) {
-    const {category,description,photo,price,serving,size,title} = item;
+export default function Item(props: Prato) {
+    const { description, photo, title } = props;
+    const navigate = useNavigate();
 
     return (
-        <div className={styles.item}>
+        <div
+            className={styles.item}
+            onClick={() => navigate(`/pratos/${props.id}`)}
+        >
             <div className={styles.item__imagem}>
                 <img src={photo} alt={title} />
             </div>
@@ -17,23 +20,7 @@ export default function Item(item: Props) {
                     <h2>{title}</h2>
                     <p>{description}</p>
                 </div>
-                <div className={styles.item__tags}>
-                    <div className={classNames(
-                        styles.item__tipo,
-                        styles['item__tipo__'+category.label.toLowerCase()]
-                    )}>
-                        {category.label}
-                    </div>
-                    <div className={styles.item__porcao}>
-                        {size}g
-                    </div>
-                    <div className={styles.item__qtdpessoas}>
-                        Serve {serving} pessoa{serving > 1 ? 's' : ''}
-                    </div>
-                    <div className={styles.item__valor}>
-                        {price.toLocaleString('pt-BR',{currency:'BRL', style:'currency'})}
-                    </div>
-                </div>
+                <TagsPrato {...props} />
             </div>
         </div>
     );
