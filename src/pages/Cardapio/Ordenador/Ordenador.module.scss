@@ -14,6 +14,7 @@
   min-width: 240px;
   padding: 0 40px;
   position: relative;
+  
   &--ativo {
     background-color: $blue;
     color: white;
@@ -29,6 +30,7 @@
       display: flex;
     }
   }
+
   &__option {
     align-items: center;
     background-color: $grey;
@@ -39,11 +41,31 @@
     height: 40px;
     justify-content: center;
     width: inherit;
+    animation: slideDown 200ms ease-in-out;
+    transition: 300ms;
+
+    // @for $i from 0 through 5 {
+    //   &:nth-child(#{$i + 1}) {
+    //     animation-delay: $i * 100ms;
+    //   }
+    // }
+
     &:hover,
     &--ativo {
       background-color: $blue;
       cursor: pointer;
       color: white;
     }
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

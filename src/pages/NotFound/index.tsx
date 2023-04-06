@@ -5,16 +5,16 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 export default function NotFound() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
     
-    return (
-        <div className={classNames([styles.container, stylesTema.container])}>
-            <div className={styles.voltar}>
-                <button onClick={() => navigate(-1)}>
-                    {'< Voltar'}
-                </button>
-            </div>
-            <NotFoundImage />
-        </div>
-    );
+  return (
+    <div className={classNames([styles.container, stylesTema.container])}>
+      <div className={styles.voltar}>
+        <button onClick={() => navigate(-1)}>
+          {'< Voltar'}
+        </button>
+      </div>
+      <NotFoundImage />
+    </div>
+  );
 }

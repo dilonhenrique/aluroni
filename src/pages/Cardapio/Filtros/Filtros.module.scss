@@ -16,12 +16,16 @@
     height: 40px;
     justify-content: center;
     width: 150px;
+    cursor: pointer;
+    transition: 300ms;
+
+    &:hover {
+      background-color: $dark-grey
+    }
+    
     &--ativo {
       background-color: $blue;
       color: white;
-    }
-    &:hover {
-      cursor: pointer;
     }
   }
 }
